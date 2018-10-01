@@ -1,0 +1,588 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "This is API",
+        "description": "Api for wine",
+        "termsOfService": "",
+        "contact": {
+            "email": "contact@mysite.com"
+        },
+        "license": {
+            "name": "Private License",
+            "url": "URL to the license"
+        },
+        "version": "1.0.0"
+    },
+    "basePath": "",
+    "paths": {
+        "/api/password/email": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Forgot password",
+                "operationId": "email",
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "email",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "role",
+                        "in": "query",
+                        "description": "admin or owner or user",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "error"
+                    }
+                }
+            }
+        },
+        "/api/auth/signup/owner": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Register new user. Where role = admin, owner or user",
+                "operationId": "register",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "User name.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "Email",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "password",
+                        "in": "query",
+                        "description": "Password",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "c_password",
+                        "in": "query",
+                        "description": "Copy passwors",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "error"
+                    }
+                }
+            }
+        },
+        "/api/auth/signup/user": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Register new user. Where role = admin, owner or user",
+                "operationId": "register",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "User name.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "Email",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "password",
+                        "in": "query",
+                        "description": "Password",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "c_password",
+                        "in": "query",
+                        "description": "Copy passwors",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "error"
+                    }
+                }
+            }
+        },
+        "/api/auth/login": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Sign in",
+                "operationId": "login",
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "User email.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "password",
+                        "in": "query",
+                        "description": "Password",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "role",
+                        "in": "query",
+                        "description": "admin or owner or user",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "error"
+                    }
+                }
+            }
+        },
+        "/api/auth/me": {
+            "get": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "About user",
+                "operationId": "me",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "The access_token with token_type bearer",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "error"
+                    }
+                }
+            }
+        },
+        "/api/auth/logout": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Logout user",
+                "operationId": "logout",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "The access_token with token_type bearer",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "error"
+                    }
+                }
+            }
+        },
+        "/api/auth/refresh": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Refresh token",
+                "operationId": "refresh",
+                "parameters": [
+                    {
+                        "name": "refresh_token",
+                        "in": "query",
+                        "description": "The refresh_token",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "error"
+                    }
+                }
+            }
+        },
+        "/api/file/listOnBase": {
+            "post": {
+                "tags": [
+                    "Files"
+                ],
+                "summary": "List files from database (need auth token)",
+                "operationId": "listOnBase",
+                "parameters": [
+                    {
+                        "name": "path",
+                        "in": "query",
+                        "description": "Path for file. For example 'product/avatar'",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "The access_token with token_type bearer",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "error"
+                    }
+                }
+            }
+        },
+        "/api/file/listOnServer": {
+            "post": {
+                "tags": [
+                    "Files"
+                ],
+                "summary": "List files from s3 server (need auth token)",
+                "operationId": "listOnServer",
+                "parameters": [
+                    {
+                        "name": "path",
+                        "in": "query",
+                        "description": "Path for file. For example 'product/avatar'",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "The access_token with token_type bearer",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "error"
+                    }
+                }
+            }
+        },
+        "/api/file/store": {
+            "post": {
+                "tags": [
+                    "Files"
+                ],
+                "summary": "Add file to s3 (need auth token)",
+                "operationId": "addFile",
+                "parameters": [
+                    {
+                        "name": "file",
+                        "in": "formData",
+                        "description": "File",
+                        "required": true,
+                        "type": "file"
+                    },
+                    {
+                        "name": "path",
+                        "in": "query",
+                        "description": "Path for file. For example 'product/avatar'",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "The access_token with token_type bearer",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "error"
+                    }
+                }
+            }
+        },
+        "/api/file/destroy/{id}": {
+            "delete": {
+                "tags": [
+                    "Files"
+                ],
+                "summary": "Destroy file by Id (need auth token)",
+                "operationId": "destroyFile",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id file for destroy",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "The access_token with token_type bearer",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "error"
+                    }
+                }
+            }
+        },
+        "/api/file/download/{id}": {
+            "get": {
+                "tags": [
+                    "Files"
+                ],
+                "summary": "Download file by Id (need auth token)",
+                "operationId": "downloadFile",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id file for download",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "The access_token with token_type bearer",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "error"
+                    }
+                }
+            }
+        },
+        "/api/file/getURL/{id}": {
+            "get": {
+                "tags": [
+                    "Files"
+                ],
+                "summary": "Get file URL)",
+                "operationId": "getUrlFile",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id file for download",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "error"
+                    }
+                }
+            }
+        },
+        "/api/user/show/{id}": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Show user",
+                "operationId": "showUser",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "The access_token with token_type bearer",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id user for show",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "error"
+                    }
+                }
+            }
+        },
+        "/api/user/update/{id}": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Update user",
+                "operationId": "updateUser",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "The access_token with token_type bearer",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "User id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "User name",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "User email",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "avatar",
+                        "in": "formData",
+                        "description": "Avatar picture",
+                        "required": false,
+                        "type": "file"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "error"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "User": {
+            "type": "object",
+            "xml": {
+                "name": "User"
+            },
+            "allOf": [
+                {
+                    "required": [
+                        "name",
+                        "email",
+                        "password"
+                    ],
+                    "properties": {
+                        "name": {
+                            "type": "string",
+                            "example": "Owner"
+                        },
+                        "email": {
+                            "type": "string",
+                            "example": "owner2@no-spam.ws"
+                        },
+                        "password": {
+                            "type": "string",
+                            "example": "123456"
+                        },
+                        "avatar": {
+                            "type": "integer",
+                            "example": "12"
+                        }
+                    }
+                }
+            ]
+        }
+    },
+    "externalDocs": {
+        "description": "Find out more about my website",
+        "url": "http..."
+    }
+}
